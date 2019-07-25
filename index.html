@@ -18,6 +18,9 @@
     <!-- VueJS-->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
+    <!--Ace JS-->
+    <script src="https://rawgit.com/ajaxorg/ace-builds/master/src-min-noconflict/ace.js"></script>
+
     <!-- axios -->
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>-->
 
@@ -38,19 +41,19 @@
                     <div class="col">
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-outline-dark" :class="{active: inputType === 'snake'}">
-                                <input type="radio" name="options" autocomplete="off" disabled>
+                                <input type="radio" name="input-type" autocomplete="off" disabled>
                                 Snake
                             </label>
                             <label class="btn btn-outline-dark" :class="{active: inputType === 'camel'}">
-                                <input type="radio" name="options" autocomplete="off" disabled>
+                                <input type="radio" name="input-type" autocomplete="off" disabled>
                                 Camel
                             </label>
                             <label class="btn btn-outline-dark" :class="{active: inputType === 'pascal'}">
-                                <input type="radio" name="options" autocomplete="off" disabled>
+                                <input type="radio" name="input-type" autocomplete="off" disabled>
                                 Pascal
                             </label>
                             <label class="btn btn-outline-dark" :class="{active: inputType === 'kebab'}">
-                                <input type="radio" name="options" autocomplete="off" disabled>
+                                <input type="radio" name="input-type" autocomplete="off" disabled>
                                 Kebab
                             </label>
                         </div>
@@ -58,29 +61,29 @@
                     <div class="col">
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-outline-dark" :class="{active: outputType === 'snake'}">
-                                <input type="radio" name="options" autocomplete="off" @click="outputType = 'snake'">
+                                <input type="radio" name="output-type" autocomplete="off" @click="outputType = 'snake'">
                                 Snake
                             </label>
                             <label class="btn btn-outline-dark" :class="{active: outputType === 'camel'}">
-                                <input type="radio" name="options" autocomplete="off" @click="outputType = 'camel'">
+                                <input type="radio" name="output-type" autocomplete="off" @click="outputType = 'camel'">
                                 Camel
                             </label>
                             <label class="btn btn-outline-dark" :class="{active: outputType === 'pascal'}">
-                                <input type="radio" name="options" autocomplete="off" @click="outputType = 'pascal'">
+                                <input type="radio" name="output-type" autocomplete="off" @click="outputType = 'pascal'">
                                 Pascal
                             </label>
                             <label class="btn btn-outline-dark" :class="{active: outputType === 'kebab'}">
-                                <input type="radio" name="options" autocomplete="off" @click="outputType = 'kebab'">
+                                <input type="radio" name="output-type" autocomplete="off" @click="outputType = 'kebab'">
                                 Kebab
                             </label>
                         </div>
                         <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
                             <label class="btn btn-outline-dark" :class="{active: outputCase === 'upper' && canApplyCase, disabled: !canApplyCase}">
-                                <input type="radio" name="options" autocomplete="off" @click="outputCase = 'upper'">
+                                <input type="radio" name="output-case" autocomplete="off" @click="outputCase = 'upper'">
                                 Upper
                             </label>
                             <label class="btn btn-outline-dark" :class="{active: outputCase === 'lower' && canApplyCase, disabled: !canApplyCase}">
-                                <input type="radio" name="options" autocomplete="off" @click="outputCase = 'lower'">
+                                <input type="radio" name="output-case" autocomplete="off" @click="outputCase = 'lower'">
                                 Lower
                             </label>
                         </div>
@@ -122,5 +125,9 @@
 <script src="app.js"></script>
 
 <style>
+    button:disabled {
+        cursor: not-allowed;
+        pointer-events: all !important;
+    }
 </style>
 </html>

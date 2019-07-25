@@ -1,28 +1,34 @@
 var app = new Vue({
     el: '#app',
     data: {
-        input: 'some_sample_text,\nmore_text,',
+        input: 'some_sample_text\nmore_text\neven_more_text',
         supportedTypes: [
             'snake',
             'camel',
             'pascal',
             'kebab'
         ],
-        outputType: 'kebab',
-        outputCase: 'upper'
+        outputType: 'camel',
+        outputCase: 'lower'
     },
     methods: {
         detectType(type) {
-            // TODO
+            let words = this.input.split(this.inputDelimiter)
+
+            let isSnake = words.every(word => word && (word === _.snakeCase(word) || word === _.snakeCase(word).toUpperCase()))
+            let isCamel = words.every(word => word && word === _.camelCase(word))
+            let isPascal = words.every(word => word && word === _.upperFirst(_.camelCase(word)) && _.startsWith(word, word[0].toUpperCase()))
+            let isKebab = words.every(word => word && (word === _.kebabCase(word) || word === _.kebabCase(word).toUpperCase()))
+
             switch (type) {
                 case 'snake':
-                    return RegExp('(.*?)_([a-zA-Z])').test(this.input)
+                    return isSnake
                 case 'camel':
-                    return false
+                    return isCamel
                 case 'pascal':
-                    return RegExp('([A-Z][a-z0-9]+)+').test(this.input)
+                    return isPascal
                 case 'kebab':
-                    return RegExp('(.*?)-([a-zA-Z])').test(this.input)
+                    return isKebab
             }
         },
         normalize(word) {
@@ -31,39 +37,11 @@ var app = new Vue({
                     return word
                         .split('_')
                 case 'camel':
-                    // TODO: Fix this
-                    return this.normalized
-                        .map((word, index) => index === 0 ? word : _.upperFirst(word))
-                        .join()
                 case 'pascal':
-                    // TODO: Fix this
-                    return word.match(RegExp('([A-Z][a-z0-9]+)+'))
+                    return word.split(/(?=[A-Z])/)
                 case 'kebab':
                     return word
                         .split('-')
-            }
-        },
-        normalizedToOutput() {
-            switch (this.outputType) {
-                case 'snake':
-                    return _.chain(this.normalized)
-                        .map(words => this.applyCase(words.join('_')))
-                        .value()
-                case 'camel':
-                    return _.chain(this.normalized)
-                        .map(words => words.map((word, index) => index === 0 ? word : _.upperFirst(word)).join(''))
-                        .value()
-
-                case 'pascal':
-                    console.log(this.normalized)
-                    return _.chain(this.normalized)
-                        .map(words => words.map(word => _.upperFirst(word)).join(''))
-                        .value()
-
-                case 'kebab':
-                    return _.chain(this.normalized)
-                        .map(words => this.applyCase(words.join('-')))
-                        .value()
             }
         },
         applyCase(word) {
@@ -80,11 +58,24 @@ var app = new Vue({
         },
         swap() {
             this.input = this.output
+
+            let types = _.keys(this.inputState)
+            let index = _.indexOf(types, this.inputType)
+
+            // Set the new output type as the old input type
+            this.outputType = types[(index + 1) % types.length]
+        }
+    },
+    watch: {
+        isValid(valid) {
+            if (!valid) {
+                console.log(this.inputState)
+            }
         }
     },
     computed: {
         inputDelimiter() {
-            return ',\n'
+            return '\n'
         },
         inputType() {
             if (!this.isValid) {
@@ -114,11 +105,35 @@ var app = new Vue({
 
             return oneActive && containsDelimiter
         },
+        constructedOutput() {
+            switch (this.outputType) {
+                case 'snake':
+                    return _.chain(this.normalized)
+                        .map(words => this.applyCase(words.join('_')))
+                        .value()
+                case 'camel':
+                    return _.chain(this.normalized)
+                        .map(words => words.map((word, index) => index === 0 ? word : _.upperFirst(word)).join(''))
+                        .value()
+
+                case 'pascal':
+                    return _.chain(this.normalized)
+                        .map(words => words.map(word => _.upperFirst(word)).join(''))
+                        .value()
+
+                case 'kebab':
+                    return _.chain(this.normalized)
+                        .map(words => this.applyCase(words.join('-')))
+                        .value()
+            }
+        },
         normalized() {
             if (!this.isValid) {
                 return []
             }
 
+            // Sanitize each row by exploding on delimiter
+            // and lower casing every word. keep it in array form
             return _.chain(this.input.split(this.inputDelimiter))
                 .map(words => this.normalize(words).map(fragment => fragment.toLowerCase().trim()))
                 .value();
@@ -128,7 +143,7 @@ var app = new Vue({
                 return ''
             }
 
-            return this.normalizedToOutput().join(this.inputDelimiter);
+            return this.constructedOutput.join(this.inputDelimiter);
         },
         canApplyCase() {
             if (!this.isValid) {
@@ -137,8 +152,5 @@ var app = new Vue({
 
             return _.includes(['snake', 'kebab'], this.outputType)
         }
-    },
-    mounted() {
-
     }
 })
