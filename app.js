@@ -79,7 +79,7 @@ var app = new Vue({
         },
         applyCase(word) {
             if (!this.canApplyCase) {
-                return
+                return word
             }
 
             switch (this.outputCase) {
