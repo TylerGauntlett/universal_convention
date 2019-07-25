@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Universal Convention</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!--Lodash-->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+
+    <!-- VueJS-->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <!-- axios -->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>-->
+
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+
+<body>
+<div id="app">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1>Universal Convention</h1>
+            </div>
+            <div class="col-12">
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-outline-dark" :class="{active: inputType === 'snake'}">
+                                <input type="radio" name="options" autocomplete="off" disabled>
+                                Snake
+                            </label>
+                            <label class="btn btn-outline-dark" :class="{active: inputType === 'camel'}">
+                                <input type="radio" name="options" autocomplete="off" disabled>
+                                Camel
+                            </label>
+                            <label class="btn btn-outline-dark" :class="{active: inputType === 'pascal'}">
+                                <input type="radio" name="options" autocomplete="off" disabled>
+                                Pascal
+                            </label>
+                            <label class="btn btn-outline-dark" :class="{active: inputType === 'kebab'}">
+                                <input type="radio" name="options" autocomplete="off" disabled>
+                                Kebab
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-outline-dark" :class="{active: outputType === 'snake'}">
+                                <input type="radio" name="options" autocomplete="off" @click="outputType = 'snake'">
+                                Snake
+                            </label>
+                            <label class="btn btn-outline-dark" :class="{active: outputType === 'camel'}">
+                                <input type="radio" name="options" autocomplete="off" @click="outputType = 'camel'">
+                                Camel
+                            </label>
+                            <label class="btn btn-outline-dark" :class="{active: outputType === 'pascal'}">
+                                <input type="radio" name="options" autocomplete="off" @click="outputType = 'pascal'">
+                                Pascal
+                            </label>
+                            <label class="btn btn-outline-dark" :class="{active: outputType === 'kebab'}">
+                                <input type="radio" name="options" autocomplete="off" @click="outputType = 'kebab'">
+                                Kebab
+                            </label>
+                        </div>
+                        <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                            <label class="btn btn-outline-dark" :class="{active: outputCase === 'upper' && canApplyCase, disabled: !canApplyCase}">
+                                <input type="radio" name="options" autocomplete="off" @click="outputCase = 'upper'">
+                                Upper
+                            </label>
+                            <label class="btn btn-outline-dark" :class="{active: outputCase === 'lower' && canApplyCase, disabled: !canApplyCase}">
+                                <input type="radio" name="options" autocomplete="off" @click="outputCase = 'lower'">
+                                Lower
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <textarea
+                                        v-model="input"
+                                        :class="{'is-invalid': (! isValid && input.length > 0), 'is-valid': (isValid && input.length > 0)}"
+                                        class="form-control"
+                                        rows="15"
+                                        placeholder="Paste here">
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <textarea class="form-control" rows="15" v-model="output" disabled></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="row mb-2">
+                    <div class="col text-center">
+                        <button type="button" class="btn btn-outline-secondary" @click="swap()">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="app.js"></script>
+
+<style>
+</style>
+</html>
