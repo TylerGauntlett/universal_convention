@@ -130,13 +130,15 @@ var app = new Vue({
             }
         },
         swap() {
-            this.input = this.output
-
             let types = _.keys(this.inputState)
+            // Get index of the current input type
             let index = _.indexOf(types, this.inputType)
 
+            // Update input
+            this.input = this.output
+
             // Set the new output type as the old input type
-            this.outputType = types[(index + 1) % types.length]
+            this.outputType = types[index]
         },
         changeInput(val) {
             if (this.input !== val) {
