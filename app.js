@@ -1,3 +1,76 @@
+Vue.component('Editor', {
+    template: '<div :id="editorId" style="width: 100%; height: 100%;"></div>',
+    props: ['editorId', 'content'],
+    data() {
+        return {
+            editor: Object,
+            beforeContent: ''
+        }
+    },
+    watch: {
+        'content'(value) {
+            if (this.beforeContent !== value) {
+                this.editor.setValue(value, 1)
+            }
+        }
+    },
+    mounted() {
+        let themes = [
+            'ambiance',
+            'chaos',
+            'chrome',
+            'clouds',
+            'clouds_midnight',
+            'cobalt',
+            'crimson_editor',
+            'dawn',
+            'dracula',
+            'dreamweaver',
+            'eclipse',
+            'github',
+            'gob',
+            'gruvbox',
+            'idle_fingers',
+            'iplastic',
+            'katzenmilch',
+            'kr_theme',
+            'kuroir',
+            'merbivore',
+            'merbivore_soft',
+            'mono_industrial',
+            'monokai',
+            'pastel_on_dark',
+            'solarized_dark',
+            'solarized_light',
+            'sqlserver',
+            'terminal',
+            'textmate',
+            'tomorrow',
+            'tomorrow_night',
+            'tomorrow_night_blue',
+            'tomorrow_night_bright',
+            'tomorrow_night_eighties',
+            'twilight',
+            'vibrant_ink',
+            'xcode'
+        ]
+
+        const lang = 'text'
+        const theme = 'tomorrow_night'
+
+        this.editor = window.ace.edit(this.editorId)
+        this.editor.setValue(this.content, 1)
+
+        this.editor.getSession().setMode(`ace/mode/${lang}`)
+        this.editor.setTheme(`ace/theme/${theme}`)
+
+        this.editor.on('change', () => {
+            this.beforeContent = this.editor.getValue()
+            this.$emit('change-content', this.editor.getValue())
+        })
+    }
+})
+
 var app = new Vue({
     el: '#app',
     data: {
@@ -64,6 +137,11 @@ var app = new Vue({
 
             // Set the new output type as the old input type
             this.outputType = types[(index + 1) % types.length]
+        },
+        changeInput(val) {
+            if (this.input !== val) {
+                this.input = val
+            }
         }
     },
     watch: {

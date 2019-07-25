@@ -69,7 +69,8 @@
                                 Camel
                             </label>
                             <label class="btn btn-outline-dark" :class="{active: outputType === 'pascal'}">
-                                <input type="radio" name="output-type" autocomplete="off" @click="outputType = 'pascal'">
+                                <input type="radio" name="output-type" autocomplete="off"
+                                       @click="outputType = 'pascal'">
                                 Pascal
                             </label>
                             <label class="btn btn-outline-dark" :class="{active: outputType === 'kebab'}">
@@ -78,11 +79,13 @@
                             </label>
                         </div>
                         <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-                            <label class="btn btn-outline-dark" :class="{active: outputCase === 'upper' && canApplyCase, disabled: !canApplyCase}">
+                            <label class="btn btn-outline-dark"
+                                   :class="{active: outputCase === 'upper' && canApplyCase, disabled: !canApplyCase}">
                                 <input type="radio" name="output-case" autocomplete="off" @click="outputCase = 'upper'">
                                 Upper
                             </label>
-                            <label class="btn btn-outline-dark" :class="{active: outputCase === 'lower' && canApplyCase, disabled: !canApplyCase}">
+                            <label class="btn btn-outline-dark"
+                                   :class="{active: outputCase === 'lower' && canApplyCase, disabled: !canApplyCase}">
                                 <input type="radio" name="output-case" autocomplete="off" @click="outputCase = 'lower'">
                                 Lower
                             </label>
@@ -93,18 +96,15 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <textarea
-                                        v-model="input"
-                                        :class="{'is-invalid': (! isValid && input.length > 0), 'is-valid': (isValid && input.length > 0)}"
-                                        class="form-control"
-                                        rows="15"
-                                        placeholder="Paste here">
-                                </textarea>
+                                <div style="height: 400px">
+                                    <editor editor-id="input-element" :content="input"
+                                            v-on:change-content="changeInput"></editor>
+                                </div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <textarea class="form-control" rows="15" v-model="output" disabled></textarea>
+                                <textarea class="form-control" rows="16" v-model="output" disabled></textarea>
                             </div>
                         </div>
                     </div>
@@ -112,9 +112,17 @@
 
                 <div class="row mb-2">
                     <div class="col text-center">
-                        <button type="button" class="btn btn-outline-secondary" @click="swap()">
+                        <button type="button" class="btn btn-outline-dark" @click="swap()">
                             <i class="fas fa-exchange-alt"></i>
                         </button>
+                    </div>
+                </div>
+
+                <div class="row mb-2" v-if="!isValid && input.length > 0">
+                    <div class="col">
+                        <div class="alert alert-danger" role="alert">
+                            Input does not match any known naming convention
+                        </div>
                     </div>
                 </div>
             </div>
@@ -125,7 +133,7 @@
 <script src="app.js"></script>
 
 <style>
-    button:disabled {
+    .disabled-input-buttons {
         cursor: not-allowed;
         pointer-events: all !important;
     }
