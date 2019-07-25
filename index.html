@@ -40,19 +40,19 @@
                 <div class="row mb-2">
                     <div class="col">
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                            <label class="btn btn-outline-secondary" :class="{active: inputType === 'snake'}">
+                            <label class="btn btn-outline-secondary disabled-input-buttons" :class="{active: inputType === 'snake'}">
                                 <input type="radio" name="input-type" autocomplete="off" disabled>
                                 Snake
                             </label>
-                            <label class="btn btn-outline-secondary" :class="{active: inputType === 'camel'}">
+                            <label class="btn btn-outline-secondary disabled-input-buttons" :class="{active: inputType === 'camel'}">
                                 <input type="radio" name="input-type" autocomplete="off" disabled>
                                 Camel
                             </label>
-                            <label class="btn btn-outline-secondary" :class="{active: inputType === 'pascal'}">
+                            <label class="btn btn-outline-secondary disabled-input-buttons" :class="{active: inputType === 'pascal'}">
                                 <input type="radio" name="input-type" autocomplete="off" disabled>
                                 Pascal
                             </label>
-                            <label class="btn btn-outline-secondary" :class="{active: inputType === 'kebab'}">
+                            <label class="btn btn-outline-secondary disabled-input-buttons" :class="{active: inputType === 'kebab'}">
                                 <input type="radio" name="input-type" autocomplete="off" disabled>
                                 Kebab
                             </label>
@@ -134,8 +134,7 @@
 
 <style>
     .disabled-input-buttons {
-        cursor: not-allowed;
-        pointer-events: all !important;
+        cursor: not-allowed !important;
     }
 </style>
 </html>
