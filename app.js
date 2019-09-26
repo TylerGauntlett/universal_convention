@@ -106,13 +106,6 @@ var app = new Vue({
             }
         }
     },
-    watch: {
-        isValid(valid) {
-            if (!valid) {
-                console.log(this.inputState)
-            }
-        }
-    },
     computed: {
         inputDelimiter() {
             return '\n'
