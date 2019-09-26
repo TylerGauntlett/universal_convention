@@ -138,12 +138,7 @@ var app = new Vue({
         },
         isValid() {
             // Only one state can be active
-            let oneActive = _.filter(this.inputState, state => state).length === 1
-
-            // Ensures there is a valid delimiter
-            let containsDelimiter = _.includes(this.input, this.inputDelimiter)
-
-            return oneActive && containsDelimiter
+            return _.filter(this.inputState, state => state).length === 1
         },
         constructedOutput() {
             switch (this.outputType) {
