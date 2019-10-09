@@ -1,5 +1,7 @@
 # universal_convention
 
+[Demo](https://tylergauntlett.com/convert.html)
+
 Quickly switch from one naming convention to another. Automatically detects the input type and outputs in desired format.
 
 ### Supported Types:
@@ -10,5 +12,3 @@ Quickly switch from one naming convention to another. Automatically detects the 
 
 
 ![img](img/UniversalConvention.png)
-
-[Demo](https://tylergauntlett.com/convert.html)
