@@ -11,4 +11,4 @@ Quickly switch from one naming convention to another. Automatically detects the 
 - kebab-case
 
 
-![img](img/UniversalConvention.png)
+![img](assets/img/UniversalConvention.png)
