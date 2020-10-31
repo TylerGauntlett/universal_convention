@@ -52,3 +52,12 @@
 .disabled.active:hover {
     background: #3f4041;
 }
+
+.editor-container {
+    height: 400px
+}
+
+.output-textarea {
+    resize: none;
+    opacity: 1 !important;
+}
