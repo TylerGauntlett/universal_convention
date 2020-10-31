@@ -41,14 +41,14 @@
 
 /* Custom Styles */
 
-.disabled-input-buttons {
+.disabled {
     cursor: not-allowed !important;
 }
 
-.disabled-input-buttons:hover {
+.disabled:hover {
     background: #595b5b;
 }
 
-.disabled-input-buttons.active:hover {
+.disabled.active:hover {
     background: #3f4041;
 }
