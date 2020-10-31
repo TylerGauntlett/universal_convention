@@ -117,13 +117,17 @@
                     <form>
                         <div class="row">
                             <div class="col">
-                                <div style="height: 400px">
+                                <div class="editor-container">
                                     <editor class="topcoat-textarea" editor-id="input-element" :content="input"
                                         v-on:change-content="changeInput"></editor>
                                 </div>
                             </div>
                             <div class="col">
-                                <textarea  class="topcoat-text-input--large" rows=15 v-model="output" ></textarea>
+                                <textarea
+                                    v-model="output"
+                                    disabled
+                                    class="output-textarea topcoat-text-input--large"
+                                    rows=15></textarea>
                             </div>
                         </div>
                     </form>
