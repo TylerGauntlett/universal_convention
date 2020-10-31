@@ -6,3 +6,53 @@
     background-color: transparent !important;
     border-color: #6c757d !important;
 }
+
+.topcoat-navigation-bar {
+    background-color: #f4f4f4;
+}
+
+.topcoat-button-bar__button--large {
+    background-color: #e9ecef;
+    color: #000;
+    margin: 1px;
+    padding: 2px 20px 2px 20px;
+    border-color: #000;
+}
+
+.topcoat-text-input--large {
+    color: #000;
+}
+
+.topcoat-icon-button--large {
+    text-align: center;
+    font-size: 25px;
+    width: 50px;
+    height: 45px;
+    columns: #fff;
+}
+
+.disabled-input-buttons {
+    background-color: transparent !important;
+    color: #e2e2e2;
+    border-color: #6c757d !important;
+    
+}
+
+
+
+.topcoat-button-bar__button--large:hover {
+    background-color: #6c757d;
+}
+
+.topcoat-text-input--large {
+    background-color: #212529;
+    color: #f2f2f2;
+}
+
+.topcoat-icon-button--large:hover {
+    background-color: #1b1c1d;
+}
+
+.topcoat-text-input--large:focus {
+    background-color: #1b1c1d;
+}
