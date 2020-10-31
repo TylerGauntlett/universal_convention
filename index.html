@@ -8,13 +8,6 @@
 
     <title>Universal Convention</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <!-- Topcoat CSS-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/css/topcoat-desktop-dark.min.css" integrity="sha512-Cwdrdy7iqIj7n5XjgDqvpCOO4aztpoIISOcabdx5igD8Z51YuOWa8BBbI8+2oOI6Rf77xMZ1vAlXvGn6jc6O5Q==" crossorigin="anonymous" />
-
     <!--Lodash-->
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
 
@@ -24,9 +17,22 @@
     <!--Ace JS-->
     <script src="https://rawgit.com/ajaxorg/ace-builds/master/src-min-noconflict/ace.js"></script>
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Topcoat CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/css/topcoat-desktop-dark.min.css"
+        integrity="sha512-Cwdrdy7iqIj7n5XjgDqvpCOO4aztpoIISOcabdx5igD8Z51YuOWa8BBbI8+2oOI6Rf77xMZ1vAlXvGn6jc6O5Q=="
+        crossorigin="anonymous">
+
     <!--Font Awesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <!-- Roboto Font -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
     <!-- Stylesheet -->
     <link rel ="stylesheet" href="assets/css/style.css">
 </head>
@@ -35,7 +41,7 @@
     <div id="app">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 text-center topcoat-navigation-bar mb-5">
+                <div class="col-12 text-center mb-2">
                     <h1>Universal Convention</h1>
                 </div>
                 <div class="col-12">
@@ -118,7 +124,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="editor-container">
-                                    <editor class="topcoat-textarea" editor-id="input-element" :content="input"
+                                    <editor editor-id="input-element" :content="input"
                                         v-on:change-content="changeInput"></editor>
                                 </div>
                             </div>

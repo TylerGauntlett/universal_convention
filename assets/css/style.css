@@ -10,14 +10,11 @@
     box-shadow: inset 0 1px rgba(0, 0, 0, .05);
 }
 
-.topcoat-navigation-bar {
-    background-color: #f4f4f4;
-}
-
 .topcoat-text-input--large {
-    color: #000;
     width: 100%;
     height: 400px;
+    line-height: 1.313rem;
+    background-color: #212529;
 }
 
 .topcoat-icon-button--large {
@@ -31,15 +28,27 @@
 }
 
 .topcoat-text-input--large {
-    background-color: #212529;
-    color: #f2f2f2;
 }
 
 .topcoat-text-input--large:focus {
     background-color: #1b1c1d;
 }
 
+/* Editor Overrides */
+.ace-tomorrow-night {
+    background-color: #212529;
+}
+
 /* Custom Styles */
+
+body {
+    font-family: 'Roboto';
+    font-size: 14px;
+}
+
+h1 {
+    color: #fff;
+}
 
 .disabled {
     cursor: not-allowed !important;
@@ -54,7 +63,11 @@
 }
 
 .editor-container {
-    height: 400px
+    height: 400px;
+}
+
+#input-element {
+    border-radius: 4px;
 }
 
 .output-textarea {
