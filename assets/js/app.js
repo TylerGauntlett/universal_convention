@@ -1,4 +1,4 @@
-var app = new Vue({
+let app = new Vue({
     el: '#app',
     data: {
         input: 'some_sample_text\nmore_text\neven_more_text',
@@ -13,7 +13,7 @@ var app = new Vue({
     },
     methods: {
         detectType(type) {
-            let words = this.input.split(this.inputDelimiter)
+            let words = this.input.trim().split(this.inputDelimiter)
 
             let isSnake = words.every(word => word && (word === _.snakeCase(word) || word === _.snakeCase(word).toUpperCase()))
             let isCamel = words.every(word => word && word === _.camelCase(word))
@@ -138,7 +138,7 @@ var app = new Vue({
                 return ''
             }
 
-            return this.constructedOutput.join(this.inputDelimiter);
+            return this.constructedOutput.join(this.inputDelimiter).trim();
         },
         canApplyCase() {
             if (!this.isValid) {
