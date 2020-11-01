@@ -41,105 +41,109 @@
     <div id="app" v-cloak>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 mb-1 mt-1 text-center">
-                    <h1>Universal Convention</h1>
-                </div>
-                <div class="col-12 mb-2" v-if="!isValid && input.length > 0">
-                    <div class="alert alert-danger" role="alert">
-                        Input does not match any known naming convention
+                <div class="col-12">
+                    <div class="mb-1 mt-1 text-center">
+                        <h4>Universal Convention</h4>
                     </div>
-                </div>
-                <div class="col-12 mb-2">
-                    <div class="topcoat-button-bar" data-toggle="buttons">
-                        <div class="topcoat-button-bar__item">
-                            <label class="topcoat-button-bar__button--large disabled" :class="{active: inputType === 'snake'}">
-                                <input type="radio" name="input-type" autocomplete="off" disabled>
-                                Snake
-                            </label>
-                        </div>
-                        <div class="topcoat-button-bar__item">
-                            <label class="topcoat-button-bar__button--large disabled" :class="{active: inputType === 'camel'}">
-                                <input type="radio" name="input-type" autocomplete="off" disabled>
-                                Camel
-                            </label>
-                        </div>
-                        <div class="topcoat-button-bar__item">
-                            <label class="topcoat-button-bar__button--large disabled" :class="{active: inputType === 'pascal'}">
-                                <input type="radio" name="input-type" autocomplete="off" disabled>
-                                Pascal
-                            </label>
-                        </div>
-                        <div class="topcoat-button-bar__item">
-                            <label class="topcoat-button-bar__button--large disabled" :class="{active: inputType === 'kebab'}">
-                                <input type="radio" name="input-type" autocomplete="off" disabled>
-                                Kebab
-                            </label>
+                    <div class="mb-2" v-if="!isValid && input.length > 0">
+                        <div class="alert alert-danger" role="alert">
+                            Input does not match any known naming convention
                         </div>
                     </div>
                 </div>
-                <div class="col-12 mb-2">
-                    <div class="editor-container">
-                        <editor editor-id="input-element" :content="input"
-                            v-on:change-content="changeInput"></editor>
-                    </div>
-                </div>
-                <div class="col-12 mb-1">
-                    <div class="topcoat-button-bar" data-toggle="buttons">
-                        <div class="topcoat-button-bar__item">
-                            <label class="topcoat-button-bar__button--large input-buttons" :class="{active: outputType === 'snake'}">
-                                <input type="radio" name="output-type" autocomplete="off" @click="outputType = 'snake'">
-                                Snake
-                            </label>
-                        </div>
-                        <div class="topcoat-button-bar__item">
-                            <label class="topcoat-button-bar__button--large input-buttons" :class="{active: outputType === 'camel'}">
-                                <input type="radio" name="output-type" autocomplete="off" @click="outputType = 'camel'">
-                                Camel
-                            </label>
-                        </div>
-                        <div class="topcoat-button-bar__item">
-                            <label class="topcoat-button-bar__button--large input-buttons" :class="{active: outputType === 'pascal'}">
-                                <input type="radio" name="output-type" autocomplete="off"
-                                    @click="outputType = 'pascal'">
-                                Pascal
-                            </label>
-                        </div>
-                        <div class="topcoat-button-bar__item">
-                            <label class="topcoat-button-bar__button--large input-buttons" :class="{active: outputType === 'kebab'}">
-                                <input type="radio" name="output-type" autocomplete="off" @click="outputType = 'kebab'">
-                                Kebab
-                            </label>
+                <div class="col-12">
+                    <div class="mb-2">
+                        <div class="topcoat-button-bar" data-toggle="buttons">
+                            <div class="topcoat-button-bar__item">
+                                <label class="topcoat-button-bar__button--large disabled" :class="{active: inputType === 'snake'}">
+                                    <input type="radio" name="input-type" autocomplete="off" disabled>
+                                    Snake
+                                </label>
+                            </div>
+                            <div class="topcoat-button-bar__item">
+                                <label class="topcoat-button-bar__button--large disabled" :class="{active: inputType === 'camel'}">
+                                    <input type="radio" name="input-type" autocomplete="off" disabled>
+                                    Camel
+                                </label>
+                            </div>
+                            <div class="topcoat-button-bar__item">
+                                <label class="topcoat-button-bar__button--large disabled" :class="{active: inputType === 'pascal'}">
+                                    <input type="radio" name="input-type" autocomplete="off" disabled>
+                                    Pascal
+                                </label>
+                            </div>
+                            <div class="topcoat-button-bar__item">
+                                <label class="topcoat-button-bar__button--large disabled" :class="{active: inputType === 'kebab'}">
+                                    <input type="radio" name="input-type" autocomplete="off" disabled>
+                                    Kebab
+                                </label>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 mb-2">
-                    <div class="topcoat-button-bar" data-toggle="buttons">
-                        <div class="topcoat-button-bar__item">
-                            <label class="topcoat-button-bar__button--large input-buttons" :class="{active: outputCase === 'upper' && canApplyCase, disabled: !canApplyCase}">
-                                <input type="radio" name="output-case" autocomplete="off" @click="outputCase = 'upper'">
-                                Upper
-                            </label>
-                        </div>
-                        <div class="topcoat-button-bar__item">
-                            <label class="topcoat-button-bar__button--large input-buttons" :class="{active: outputCase === 'lower' && canApplyCase, disabled: !canApplyCase}">
-                                <input type="radio" name="output-case" autocomplete="off" @click="outputCase = 'lower'">
-                                Lower
-                            </label>
+                    <div class="mb-2">
+                        <div class="editor-container">
+                            <editor editor-id="input-element" :content="input"
+                                v-on:change-content="changeInput"></editor>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 mb-2">
-                    <textarea
-                        v-model="output"
-                        disabled
-                        class="output-textarea topcoat-text-input--large"
-                        rows=15>
-                    </textarea>
-                </div>
-                <div class="col-12 mb-2 text-center">
-                    <button type="button" class="topcoat-icon-button--large"  @click="swap()">
-                        <i class="fas fa-exchange-alt"></i>
-                    </button>
+                    <div class="mb-1">
+                        <div class="topcoat-button-bar" data-toggle="buttons">
+                            <div class="topcoat-button-bar__item">
+                                <label class="topcoat-button-bar__button--large input-buttons" :class="{active: outputType === 'snake'}">
+                                    <input type="radio" name="output-type" autocomplete="off" @click="outputType = 'snake'">
+                                    Snake
+                                </label>
+                            </div>
+                            <div class="topcoat-button-bar__item">
+                                <label class="topcoat-button-bar__button--large input-buttons" :class="{active: outputType === 'camel'}">
+                                    <input type="radio" name="output-type" autocomplete="off" @click="outputType = 'camel'">
+                                    Camel
+                                </label>
+                            </div>
+                            <div class="topcoat-button-bar__item">
+                                <label class="topcoat-button-bar__button--large input-buttons" :class="{active: outputType === 'pascal'}">
+                                    <input type="radio" name="output-type" autocomplete="off"
+                                        @click="outputType = 'pascal'">
+                                    Pascal
+                                </label>
+                            </div>
+                            <div class="topcoat-button-bar__item">
+                                <label class="topcoat-button-bar__button--large input-buttons" :class="{active: outputType === 'kebab'}">
+                                    <input type="radio" name="output-type" autocomplete="off" @click="outputType = 'kebab'">
+                                    Kebab
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="topcoat-button-bar" data-toggle="buttons">
+                            <div class="topcoat-button-bar__item">
+                                <label class="topcoat-button-bar__button--large input-buttons" :class="{active: outputCase === 'upper' && canApplyCase, disabled: !canApplyCase}">
+                                    <input type="radio" name="output-case" autocomplete="off" @click="outputCase = 'upper'">
+                                    Upper
+                                </label>
+                            </div>
+                            <div class="topcoat-button-bar__item">
+                                <label class="topcoat-button-bar__button--large input-buttons" :class="{active: outputCase === 'lower' && canApplyCase, disabled: !canApplyCase}">
+                                    <input type="radio" name="output-case" autocomplete="off" @click="outputCase = 'lower'">
+                                    Lower
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <textarea
+                            v-model="output"
+                            disabled
+                            class="output-textarea topcoat-text-input--large"
+                            rows=15>
+                        </textarea>
+                    </div>
+                    <div class="mb-3 text-center">
+                        <button type="button" class="topcoat-icon-button--large"  @click="swap()">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
