@@ -18,23 +18,26 @@
     <script src="https://rawgit.com/ajaxorg/ace-builds/master/src-min-noconflict/ace.js"></script>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    <link
+        rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Topcoat CSS-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/css/topcoat-desktop-dark.min.css"
+    <link
+        rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/css/topcoat-desktop-dark.min.css"
         integrity="sha512-Cwdrdy7iqIj7n5XjgDqvpCOO4aztpoIISOcabdx5igD8Z51YuOWa8BBbI8+2oOI6Rf77xMZ1vAlXvGn6jc6O5Q=="
         crossorigin="anonymous">
 
     <!--Font Awesome-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    <link
+        rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <!-- Roboto Font -->
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
 
     <!-- Stylesheet -->
-    <link rel ="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -65,7 +68,9 @@
                         {{ inputName }}
                     </span>
                     <span class="float-right">
-                        <select v-model="outputCapitalization" :disabled="!canApplyCapitalization || !isValid" class="topcoat-button--large">
+                        <select
+                            v-model="outputCapitalization" :disabled="!canApplyCapitalization || !isValid"
+                            class="topcoat-button--large">
                             <option v-for="(name, key) in outputCapitalizations" :value="key" :key="key">
                                 {{ name }}
                             </option>
@@ -74,21 +79,17 @@
                 </div>
                 <div class="mb-2">
                     <div class="editor-container">
-                        <editor editor-id="input-element" :content="input"
-                            v-on:change-content="changeInput"></editor>
+                        <editor editor-id="input-element" :content="input" v-on:change-content="changeInput"></editor>
                     </div>
                 </div>
                 <div class="mb-2 text-center">
-                    <button type="button" class="topcoat-icon-button--large"  @click="swap()" :disabled="!isValid">
+                    <button type="button" class="topcoat-icon-button--large" @click="swap()" :disabled="!isValid">
                         <i class="fas fa-exchange-alt"></i>
                     </button>
                 </div>
                 <div class="mb-2">
                     <textarea
-                        v-model="output"
-                        disabled
-                        class="output-textarea topcoat-text-input--large"
-                        rows=15>
+                        v-model="output" disabled class="output-textarea topcoat-text-input--large" rows=15>
                     </textarea>
                 </div>
             </div>

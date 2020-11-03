@@ -123,8 +123,7 @@ let app = new Vue({
                 case 'snake':
                     if (this.inputCapitalization === 'lower') {
                         return 'snake-case'
-                    }
-                    else if (this.inputCapitalization === 'upper') {
+                    } else if (this.inputCapitalization === 'upper') {
                         return 'SNAKE-CASE'
                     }
 
@@ -191,14 +190,14 @@ let app = new Vue({
             // and lower casing every word. keep it in array form
             return _.chain(this.input.split(this.inputDelimiter))
                 .map(words => this.normalize(words).map(fragment => fragment.toLowerCase().trim()))
-                .value();
+                .value()
         },
         output() {
             if (!this.isValid) {
                 return ''
             }
 
-            return this.constructedOutput.join(this.inputDelimiter).trim();
+            return this.constructedOutput.join(this.inputDelimiter).trim()
         },
         canApplyCapitalization() {
             if (!this.isValid) {
