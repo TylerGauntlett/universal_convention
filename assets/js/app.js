@@ -1,15 +1,26 @@
 let app = new Vue({
     el: '#app',
     data: {
-        input: 'some_sample_text\nmore_text\neven_more_text',
+
+        input: 'someSampleText\nmoreText\nevenMoreText',
         supportedTypes: [
             'snake',
             'camel',
             'pascal',
             'kebab'
         ],
-        outputType: 'camel',
-        outputCase: 'lower'
+        outputType: 'snake',
+        outputTypes: {
+            snake: 'Snake',
+            camel: 'Camel',
+            pascal: 'Pascal',
+            kebab: 'Kebab',
+        },
+        outputCapitalization: 'lower',
+        outputCapitalizations: {
+            lower: 'Lower',
+            upper: 'Upper',
+        }
     },
     methods: {
         detectType(type) {
@@ -45,11 +56,11 @@ let app = new Vue({
             }
         },
         applyCase(word) {
-            if (!this.canApplyCase) {
+            if (!this.canApplyCapitalization) {
                 return word
             }
 
-            switch (this.outputCase) {
+            switch (this.outputCapitalization) {
                 case 'upper':
                     return word.toUpperCase()
                 case 'lower':
@@ -87,6 +98,54 @@ let app = new Vue({
                 .keys()
                 .head()
                 .value()
+        },
+        inputCapitalization() {
+            if (!this.isValid) {
+                return null
+            }
+
+            if (this.input === this.input.toLowerCase()) {
+                return 'lower'
+            }
+
+            if (this.input === this.input.toUpperCase()) {
+                return 'upper'
+            }
+
+            return null
+        },
+        inputName() {
+            if (!this.isValid) {
+                return 'N/A'
+            }
+
+            switch (this.inputType) {
+                case 'snake':
+                    if (this.inputCapitalization === 'lower') {
+                        return 'snake-case'
+                    } else if (this.inputCapitalization === 'upper') {
+                        return 'SNAKE-CASE'
+                    }
+
+                    return 'N/A'
+                case 'camel':
+                    return 'camelCase'
+
+                case 'pascal':
+                    return 'PascalCase'
+
+                case 'kebab':
+                    if (this.inputCapitalization === 'lower') {
+                        return 'kebab-case'
+                    }
+                    if (this.inputCapitalization === 'upper') {
+                        return 'KEBAB-CASE'
+                    }
+
+                    return 'N/A'
+            }
+
+            return this.inputType
         },
         inputState() {
             return {
@@ -131,16 +190,16 @@ let app = new Vue({
             // and lower casing every word. keep it in array form
             return _.chain(this.input.split(this.inputDelimiter))
                 .map(words => this.normalize(words).map(fragment => fragment.toLowerCase().trim()))
-                .value();
+                .value()
         },
         output() {
             if (!this.isValid) {
                 return ''
             }
 
-            return this.constructedOutput.join(this.inputDelimiter).trim();
+            return this.constructedOutput.join(this.inputDelimiter).trim()
         },
-        canApplyCase() {
+        canApplyCapitalization() {
             if (!this.isValid) {
                 return false
             }
