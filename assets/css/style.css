@@ -17,17 +17,8 @@
     background-color: #212529;
 }
 
-.topcoat-icon-button--large {
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
-}
-
 .topcoat-button-bar__button--large:hover {
     background-color: #6c757d;
-}
-
-.topcoat-text-input--large {
 }
 
 .topcoat-text-input--large:focus {
@@ -44,10 +35,6 @@
 body {
     font-family: 'Roboto';
     font-size: 14px;
-}
-
-h1, h2, h3, h4, h5 {
-    color: #fff;
 }
 
 .disabled {
@@ -84,4 +71,31 @@ h1, h2, h3, h4, h5 {
     font-size: 1.25rem;
     color: #fff;
     font-weight: 500;
+}
+
+.topcoat-select-label {
+    overflow: hidden;
+    position: relative;
+}
+
+.topcoat-select-label::after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f0d7";
+    color: #c6c8c8;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    pointer-events: none;
+    padding-left: 20px;
+}
+
+.topcoat-select {
+    border: 0 !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-right: 13px;
+    outline: 0 !important;
+    box-shadow: inset 0 1px #737373 !important;
 }

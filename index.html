@@ -58,23 +58,27 @@
             <div class="col-12 mb-2">
                 <div class="mb-2 text-center">
                     <span class="float-left">
-                        <select v-model="outputType" :disabled="!isValid" class="topcoat-button--large">
-                            <option v-for="(name, key) in outputTypes" :value="key" :key="key">
-                                {{ name }}
-                            </option>
-                        </select>
+                        <label class="topcoat-select-label">
+                            <select v-model="outputType" :disabled="!isValid" class="topcoat-button case-select topcoat-select">
+                                <option v-for="(name, key) in outputTypes" :value="key" :key="key">
+                                    {{ name }}
+                                </option>
+                            </select>
+                        </label>
                     </span>
                     <span class="input-name">
                         {{ inputName }}
                     </span>
                     <span class="float-right">
-                        <select
-                            v-model="outputCapitalization" :disabled="!canApplyCapitalization || !isValid"
-                            class="topcoat-button--large">
-                            <option v-for="(name, key) in outputCapitalizations" :value="key" :key="key">
-                                {{ name }}
-                            </option>
-                        </select>
+                        <label class="topcoat-select-label">
+                            <select
+                                v-model="outputCapitalization" :disabled="!canApplyCapitalization || !isValid"
+                                class="topcoat-button topcoat-select">
+                                <option v-for="(name, key) in outputCapitalizations" :value="key" :key="key">
+                                    {{ name }}
+                                </option>
+                            </select>
+                        </label>
                     </span>
                 </div>
                 <div class="mb-2">
