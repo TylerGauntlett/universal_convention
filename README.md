@@ -1,6 +1,6 @@
 # universal_convention
 
-[Demo](https://tylergauntlett.com/uc/index.html)
+[Demo](https://tylergauntlett.github.io/universal_convention/index.html)
 
 Quickly switch from one naming convention to another. Automatically detects the input type and outputs in desired format.
 
@@ -9,6 +9,3 @@ Quickly switch from one naming convention to another. Automatically detects the 
 - PascalCase
 - snake_case
 - kebab-case
-
-
-![img](assets/img/UniversalConvention.png)
