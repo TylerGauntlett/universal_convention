@@ -122,9 +122,9 @@ let app = new Vue({
             switch (this.inputType) {
                 case 'snake':
                     if (this.inputCapitalization === 'lower') {
-                        return 'snake-case'
+                        return 'snake_case'
                     } else if (this.inputCapitalization === 'upper') {
-                        return 'SNAKE-CASE'
+                        return 'SNAKE_CASE'
                     }
 
                     return 'N/A'
@@ -136,10 +136,10 @@ let app = new Vue({
 
                 case 'kebab':
                     if (this.inputCapitalization === 'lower') {
-                        return 'kebab_case'
+                        return 'kebab-case'
                     }
                     if (this.inputCapitalization === 'upper') {
-                        return 'KEBAB_CASE'
+                        return 'KEBAB-CASE'
                     }
 
                     return 'N/A'
